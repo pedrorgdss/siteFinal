@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - EcoCycle</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #a5d6a7;
+            --text-color: #333;
+            --light-bg: rgba(245, 249, 245, 0.9);
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/eco-pattern.png') repeat;
+            opacity: 0.03;
+            z-index: -1;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            height: 100px;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .services-page {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+        
+        .services-page h2 {
+            color: var(--primary-dark);
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .services-page h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 2px;
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
+        }
+        
+        .card-img-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .card h3 {
+            color: var(--primary-dark);
+            margin: 0 0 1.5rem 0;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin: 0 0 2rem 0;
+        }
+        
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-top: auto;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .card-btn i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .card-btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 5px 15px rgba(27, 94, 32, 0.3);
+        }
+        
+        .card-btn:hover i {
+            transform: translateX(3px);
+        }
+        
+        .card-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+        
+        @media (max-width: 900px) {
+            .service-cards {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+            
+            .services-page h2 {
+                font-size: 2.3rem;
+                margin-bottom: 3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .services-page {
+                padding: 0 1rem;
+            }
+            
+            .services-page h2 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                max-width: 100%;
+            }
+            
+            .card-content {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Animação de flutuação */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Efeito de onda */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+        
+        .wave .shape-fill {
+            fill: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="EcoCycle Logo" class="logo">
+        </div>
+    </header>
+
+    <main class="services-page">
+        <h2>Nossos Serviços</h2>
+        
+        <div class="service-cards">
+            <!-- Card 1 -->
+            <div class="card floating" style="animation-delay: 0s;">
+                <div class="card-img-container">
+                    <img src="img/coletaSeletiva.webp" alt="Coleta Seletiva Inteligente">
+                    <span class="card-tag">Mais Popular</span>
+                </div>
+                <div class="card-content">
+                    <h3>Coleta Seletiva Inteligente</h3>
+                    <p>Implementamos pontos de coleta inteligentes em condomínios e empresas com sensores que indicam quando estão cheios, otimizando toda a cadeia de reciclagem e reduzindo custos operacionais.</p>
+                    <a href="#" class="card-btn">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card floating" style="animation-delay: 0.2s;">
+                <div class="card-img-container">
+                    <img src="img/app de reciclagem.webp" alt="App de Reciclagem">
+                    <span class="card-tag">Novidade</span>
+                </div>
+                <div class="card-content">
+                    <h3>App EcoCycle</h3>
+                    <p>Nosso aplicativo conecta você diretamente às cooperativas de reciclagem mais próximas, ensina como separar cada tipo de resíduo e oferece recompensas por reciclagem através do nosso programa de pontos.</p>
+                    <a href="#" class="card-btn">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card floating" style="animation-delay: 0.4s;">
+                <div class="card-img-container">
+                    <img src="img/educacaoAmbiental.webp" alt="Educação Ambiental">
+                </div>
+                <div class="card-content">
+                    <h3>Educação Ambiental</h3>
+                    <p>Desenvolvemos programas educacionais completos para escolas e empresas, incluindo workshops, materiais didáticos e atividades práticas sobre sustentabilidade e gestão de resíduos.</p>
+                    <a href="#" class="card-btn">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="card floating" style="animation-delay: 0.6s;">
+                <div class="card-img-container">
+                    <img src="img/compostagemUrbana.png" alt="Compostagem Urbana">
+                </div>
+                <div class="card-content">
+                    <h3>Compostagem Urbana</h3>
+                    <p>Soluções completas para transformação de resíduos orgânicos em adubo de alta qualidade, incluindo instalação de composteiras elétricas e manutenção periódica em ambientes urbanos.</p>
+                    <a href="#" class="card-btn">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="card floating" style="animation-delay: 0.8s;">
+                <div class="card-img-container">
+                    <img src="img/reciclagemeletronica.png" alt="Reciclagem de Eletrônicos">
+                </div>
+                <div class="card-content">
+                    <h3>Reciclagem de Eletrônicos</h3>
+                    <p>Serviço especializado para descarte seguro de equipamentos eletrônicos, com desmontagem profissional e reaproveitamento de componentes seguindo todas as normas ambientais.</p>
+                    <a href="#" class="card-btn">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="card floating" style="animation-delay: 1s;">
+                <div class="card-img-container">
+                    <img src="img/consultoriaCorporativa.png" alt="Consultoria para Empresas">
+                    <span class="card-tag">Para Empresas</span>
+                </div>
+                <div class="card-content">
+                    <h3>Consultoria Corporativa</h3>
+                    <p>Desenvolvemos estratégias personalizadas de sustentabilidade para empresas, desde a análise de geração de resíduos até a implementação de programas de economia circular.</p>
+                    <a href="#" class="card-btn">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 EcoCycle. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Efeito de hover dinâmico nos cards
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const x = e.pageX - card.getBoundingClientRect().left;
+                const y = e.pageY - card.getBoundingClientRect().top;
+                
+                const centerX = card.offsetWidth / 2;
+                const centerY = card.offsetHeight / 2;
+                
+                const angleX = (y - centerY) / 20;
+                const angleY = (centerX - x) / 20;
+                
+                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 100);
+            });
+        });
+        
+        // Efeito de digitação no título
+        const serviceTitle = document.querySelector('.services-page h2');
+        const originalText = serviceTitle.textContent;
+        serviceTitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                serviceTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>

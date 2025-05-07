@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCycle - Reciclagem Inteligente</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="img/logo-icon.png">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #a5d6a7;
+            --text-color: #333;
+            --light-bg: rgba(245, 249, 245, 0.9);
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/eco-pattern.png') repeat;
+            opacity: 0.03;
+            z-index: -1;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .scrolled-header {
+            background-color: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(5px);
+            padding: 0.3rem 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 170px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.85), rgba(27, 94, 32, 0.95));
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        
+        .cta-button {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mission {
+            background-color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            margin: 5rem auto;
+            max-width: 1000px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        
+        .mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/leaf-pattern.png') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .mission-content {
+            position: relative;
+            z-index: 1;
+            transform: translateZ(20px);
+        }
+        
+        .mission h3 {
+            font-size: 2.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .mission h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 2px;
+        }
+        
+        .mission p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .wave {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+        
+        .wave .shape-fill {
+            fill: var(--primary-dark);
+        }
+        
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--white);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .social-links img {
+            height: 20px;
+            filter: brightness(0) invert(1);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover img {
+            filter: brightness(0) invert(0.7);
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .mission {
+                padding: 4rem 2rem;
+                margin: 4rem 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .logo {
+                height: 70px;
+                margin-bottom: 0.5rem;
+            }
+            
+            nav ul {
+                margin-top: 0.5rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero {
+                padding: 6rem 1.5rem;
+                min-height: 70vh;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .mission h3 {
+                font-size: 1.8rem;
+            }
+            
+            .mission p {
+                font-size: 1rem;
+                text-align: left;
+                padding: 0 1rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 5rem 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul li {
+                margin-left: 0.7rem;
+                margin-right: 0.7rem;
+            }
+            
+            .mission {
+                padding: 3rem 1rem;
+                margin: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="EcoCycle Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre Nós</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="floating-shapes">
+                <div class="shape" style="width: 300px; height: 300px; top: 10%; left: 5%; animation: float 8s ease-in-out infinite;"></div>
+                <div class="shape" style="width: 200px; height: 200px; top: 60%; left: 80%; animation: float 6s ease-in-out infinite 2s;"></div>
+                <div class="shape" style="width: 250px; height: 250px; top: 30%; left: 70%; animation: float 7s ease-in-out infinite 1s;"></div>
+            </div>
+            <div class="hero-content">
+                <h2>Transformando resíduos em recursos sustentáveis</h2>
+                <p>Nosso compromisso é criar um futuro mais limpo através de soluções inteligentes de reciclagem que conectam pessoas, tecnologia e meio ambiente.</p>
+                <a href="servicos.html" class="cta-button">
+                    <span>Conheça nossos serviços</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="mission">
+            <div class="mission-content">
+                <h3>Nossa Missão</h3>
+                <p>A EcoCycle desenvolve soluções inovadoras para facilitar a reciclagem em ambientes urbanos, conectando geradores de resíduos a cooperativas de reciclagem através de tecnologia. Nosso objetivo é criar uma rede eficiente de gestão de resíduos que beneficie toda a comunidade, reduzindo o impacto ambiental e promovendo a economia circular. Acreditamos que pequenas ações podem gerar grandes transformações quando feitas coletivamente.</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 EcoCycle. Todos os direitos reservados.</p>
+        <div class="social-links">
+            
+            <a href="https://www.instagram.com/eco_cycle0211/"><img src="img/instagram-icon.png" alt="Instagram"></a>
+            <a href="https://x.com/EcoCycle_0211"><img src="img/x-icon.png" alt="X"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de header ao rolar
+        const header = document.getElementById('main-header');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled-header');
+            } else {
+                header.classList.remove('scrolled-header');
+            }
+        });
+        
+        // Efeito de digitação no título
+        const heroTitle = document.querySelector('.hero h2');
+        const originalTitle = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalTitle.length) {
+                heroTitle.textContent += originalTitle.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50 + Math.random() * 50);
+            }
+        }
+        
+        setTimeout(typeWriter, 500);
+        
+        // Efeito de movimento 3D na seção de missão
+        const missionSection = document.querySelector('.mission');
+        
+        if (missionSection) {
+            missionSection.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                missionSection.style.transform = `
+                    perspective(1000px)
+                    rotateX(${(y - 0.5) * 5}deg)
+                    rotateY(${(x - 0.5) * 5}deg)
+                `;
+            });
+            
+            missionSection.addEventListener('mouseleave', () => {
+                missionSection.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        }
+        
+        // Animação das formas flutuantes
+        const shapes = document.querySelectorAll('.shape');
+        
+        shapes.forEach((shape, index) => {
+            // Configurações aleatórias para cada forma
+            const size = Math.random() * 100 + 150;
+            const posX = Math.random() * 80 + 10;
+            const posY = Math.random() * 80 + 10;
+            const duration = Math.random() * 5 + 5;
+            const delay = Math.random() * 5;
+            
+            shape.style.width = `${size}px`;
+            shape.style.height = `${size}px`;
+            shape.style.top = `${posY}%`;
+            shape.style.left = `${posX}%`;
+            shape.style.animation = `float ${duration}s ease-in-out infinite ${delay}s`;
+        });
+    </script>
+</body>
+</html>

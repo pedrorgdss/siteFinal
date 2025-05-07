@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - EcoCycle</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #a5d6a7;
+            --text-color: #333;
+            --light-bg: rgba(245, 249, 245, 0.9);
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/eco-pattern.png') repeat;
+            opacity: 0.03;
+            z-index: -1;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 100px;
+        }
+        
+        .contact-page {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        
+        .contact-page h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .contact-page h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+        }
+        
+        #contact-form {
+            flex: 1;
+            min-width: 400px;
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        #contact-form:hover {
+            transform: translateY(-5px);
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(27, 94, 32, 0.3);
+        }
+        
+        .contact-details {
+            flex: 1;
+            min-width: 400px;
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .contact-details:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-details h3 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .contact-details h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text strong {
+            display: block;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 900px) {
+            .contact-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            #contact-form,
+            .contact-details {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-page {
+                padding: 2rem 1rem;
+            }
+            
+            .contact-page h2 {
+                font-size: 2rem;
+            }
+            
+            #contact-form,
+            .contact-details {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Animação de confirmação */
+        .confirmation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(150%);
+            transition: transform 0.4s ease-out;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .confirmation.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="EcoCycle Logo" class="logo">
+        </div>
+    </header>
+
+    <main class="contact-page">
+        <h2>Entre em Contato</h2>
+        
+        <div class="contact-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Assunto:</label>
+                    <select id="subject" name="subject">
+                        <option value="" disabled selected>Selecione um assunto</option>
+                        <option value="info">Informações</option>
+                        <option value="service">Serviços</option>
+                        <option value="partnership">Parcerias</option>
+                        <option value="other">Outro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                </button>
+            </form>
+            
+            <div class="contact-details">
+                <h3>Outras Formas de Contato</h3>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Email</strong>
+                            <p>ecocyle0211@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Telefone</strong>
+                            <p>(11) 98765-4321</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Endereço</strong>
+                            <p>Rua dos Pinheiros, 870, Pinheiros - São Paulo/SP</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Horário de atendimento</strong>
+                            <p>Segunda a sexta, das 9h às 18h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.376415272032!2d-46.6872777246876!3d-23.55812457880089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57a7c7d7e53d%3A0xe9a6a9a9a9a9a9a9!2sRua%20dos%20Pinheiros%2C%20870%20-%20Pinheiros%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005422-001!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 EcoCycle. Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="confirmation" id="confirmation">
+        <i class="fas fa-check-circle"></i>
+        <span>Mensagem enviada com sucesso!</span>
+    </div>
+
+    <script>
+        // Formulário de contato
+        const contactForm = document.getElementById('contact-form');
+        const confirmation = document.getElementById('confirmation');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulação de envio
+            setTimeout(() => {
+                // Mostra a confirmação
+                confirmation.classList.add('show');
+                
+                // Limpa o formulário
+                contactForm.reset();
+                
+                // Esconde a confirmação após 3 segundos
+                setTimeout(() => {
+                    confirmation.classList.remove('show');
+                }, 3000);
+            }, 1000);
+        });
+        
+        // Efeito de máquina de escrever no placeholder do textarea
+        const textarea = document.getElementById('message');
+        const phrases = [
+            "Como podemos ajudar você hoje?",
+            "Descreva sua dúvida ou solicitação...",
+            "Estamos ansiosos para ouvir você!"
+        ];
+        let currentPhrase = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        function typeWriter() {
+            const fullPhrase = phrases[currentPhrase];
+            
+            if (isDeleting) {
+                textarea.placeholder = fullPhrase.substring(0, currentChar - 1);
+                currentChar--;
+                typingSpeed = 50;
+            } else {
+                textarea.placeholder = fullPhrase.substring(0, currentChar + 1);
+                currentChar++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && currentChar === fullPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 1500; // Pausa no final
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                typingSpeed = 500; // Pausa no início
+            }
+            
+            setTimeout(typeWriter, typingSpeed);
+        }
+        
+        // Inicia o efeito
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+/* Estilos gerais - Tema Ecológico Atualizado */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #1E5631; /* Verde mais escuro para melhor legibilidade */
+    background-color: #E4F5E4; /* Verde água bem claro */
+}
+
+header {
+    background-color: #2A7F3F; /* Verde mais saturado */
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 150px;
+    margin-right: 15px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    color: #A4DE02; /* Verde limão mais vibrante */
+}
+
+/* Hero section */
+.hero {
+    background-image: linear-gradient(rgba(42, 127, 63, 0.85), rgba(42, 127, 63, 0.85)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.cta-button {
+    background-color: #A4DE02; /* Verde limão mais vibrante */
+    color: #1E5631; /* Texto verde escuro */
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-button:hover {
+    background-color: #76BA1B; /* Verde mais maduro */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* About page styles */
+.about-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #F5FEF5; /* Branco com leve tom verde */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(42, 127, 63, 0.1);
+}
+
+.team-members {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.member {
+    text-align: center;
+    width: 250px;
+    margin: 1rem;
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #4CC552; /* Verde mais vibrante */
+    box-shadow: 0 0 0 3px #A66121; /* Borda terrosa mais suave */
+}
+
+/* Services page styles */
+.services-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #E4F5E4; /* Combinando com o fundo do body */
+}
+
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.card {
+    width: 30%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(166, 97, 33, 0.1); /* Sombra terrosa */
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-top: 5px solid #4CC552; /* Verde vibrante */
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(166, 97, 33, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Contact page styles */
+.contact-page {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#contact-form {
+    width: 60%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2A7F3F; /* Verde do header */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #4CC552; /* Verde vibrante */
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: rgba(164, 222, 2, 0.05); /* Verde limão muito claro */
+}
+
+.submit-btn {
+    background-color: #2A7F3F; /* Verde do header */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #1E5631; /* Verde mais escuro */
+}
+
+.contact-info {
+    width: 35%;
+    background: #F5FEF5; /* Igual ao about-page */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #4CC552; /* Verde vibrante */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Footer styles */
+footer {
+    background: linear-gradient(to right, #1E5631, #A66121); /* Degradê verde escuro para terroso */
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    margin: 0 10px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+}
+
+.social-links img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1); /* Ícones brancos */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+    
+    .service-cards {
+        flex-direction: column;
+    }
+    
+    .card {
+        width: 100%;
+    }
+    
+    #contact-form,
+    .contact-info {
+        width: 100%;
+    }
+    
+    .contact-info {
+        margin-top: 2rem;
+    }
+}
